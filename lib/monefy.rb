@@ -9,4 +9,8 @@ class Monefy
 
     self
   end
+
+  def inspect
+    "#{'%.02f' % amount} #{currency}"
+  end
 end

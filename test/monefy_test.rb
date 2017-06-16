@@ -6,7 +6,15 @@ class MonefyTest < Minitest::Test
   end
 
   def test_instance_variable
-    assert_equal 50, Monefy.new(50, 'EUR').amount
-    assert_equal 'EUR', Monefy.new(50, 'EUR').currency
+    assert_equal 50, fifty_eur.amount
+    assert_equal 'EUR', fifty_eur.currency
+  end
+
+  def test_inspect_method
+    assert_equal "50.00 EUR", fifty_eur.inspect
+  end
+
+  def fifty_eur
+    Monefy.new(50, 'EUR')
   end
 end
