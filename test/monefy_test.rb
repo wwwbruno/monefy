@@ -14,6 +14,10 @@ class MonefyTest < Minitest::Test
     assert_equal "50.00 EUR", fifty_eur.inspect
   end
 
+  def test_convert_to_method
+    assert_equal Monefy.new(55.50, 'USD'), fifty_eur.convert_to('USD')
+  end
+
   def fifty_eur
     Monefy.new(50, 'EUR')
   end
