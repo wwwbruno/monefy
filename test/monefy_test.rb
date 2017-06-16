@@ -5,7 +5,8 @@ class MonefyTest < Minitest::Test
     refute_nil ::Monefy::VERSION
   end
 
-  def test_it_does_something_useful
-    assert false
+  def test_instance_variable
+    assert_equal 50, Monefy.new(50, 'EUR').amount
+    assert_equal 'EUR', Monefy.new(50, 'EUR').currency
   end
 end

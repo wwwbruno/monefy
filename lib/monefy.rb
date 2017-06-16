@@ -1,5 +1,12 @@
 require "monefy/version"
 
-module Monefy
-  # Your code goes here...
+class Monefy
+  attr_reader :amount, :currency
+
+  def initialize(amount, currency)
+    @amount = amount
+    @currency = currency
+
+    self
+  end
 end
