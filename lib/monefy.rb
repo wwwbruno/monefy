@@ -70,11 +70,21 @@ class Monefy
   private
 
   def validate_currencies_rates
-    raise StandardError, "No conversion rates set" unless defined? @@currencies_rates
+    return if defined? @@currencies_rates
+
+    raise StandardError, "No conversion rates set"
   end
 
   def validate_currency(currency)
-    raise StandardError, "Invalid currency" unless @@currencies_rates.include?(currency)
+    return if @@currencies_rates.include?(currency)
+
+    raise StandardError, "Invalid currency"
+  end
+
+  def validate_monefy_instance(monefy)
+    return if monefy.instance_of? Monefy
+
+    raise StandardError, "Not a Monefy instance parameter"
   end
 
   def currencies_rates

@@ -64,18 +64,14 @@ class Monefy
     #   Monefy.new(50, 'EUR') * 3
     #   => #<Monefy:0x... @amount=150, @currency="EUR">
     def * value
+      validate_arithmetic_value(value)
+
       new_amount = (amount.to_f * value.to_f)
 
       create_new_instace(new_amount, currency)
     end
 
     private
-
-    def validate_monefy_instance(monefy)
-      return if monefy.instance_of? Monefy
-
-      raise StandardError, "Not a Monefy instance parameter"
-    end
 
     def validate_arithmetic_value(value)
       return if value.is_a? Numeric

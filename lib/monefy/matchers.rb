@@ -4,7 +4,7 @@ class Monefy
 
     # Check if two distinct Monefy instances are equal.
     #
-    # @param money [Monefy] another Monefy instance.
+    # @param monefy [Monefy] another Monefy instance.
     #
     # @return [Boolean] true if both instances are equal and false if they
     # are different.
@@ -12,13 +12,15 @@ class Monefy
     # @example
     #   Monefy.new(50, 'EUR') == Monefy.new(40, 'EUR') # => false
     #   Monefy.new(50, 'EUR') == Monefy.new(55.5, 'USD') # => true
-    def == money
-      amount == converted_money_currency(money)
+    def == monefy
+      validate_monefy_instance(monefy)
+
+      amount == converted_money_currency(monefy)
     end
 
     # Check if two distinct Monefy instances are different.
     #
-    # @param money [Monefy] another Monefy instance.
+    # @param monefy [Monefy] another Monefy instance.
     #
     # @return [Boolean] true if both instances are different and false if they
     # are equal.
@@ -26,13 +28,15 @@ class Monefy
     # @example
     #   Monefy.new(50, 'EUR') != Monefy.new(40, 'EUR') # => true
     #   Monefy.new(50, 'EUR') != Monefy.new(55.5, 'USD') # => false
-    def != money
-      amount != converted_money_currency(money)
+    def != monefy
+      validate_monefy_instance(monefy)
+
+      amount != converted_money_currency(monefy)
     end
 
     # Check if one Monefy instance is greater than another.
     #
-    # @param money [Monefy] another Monefy instance.
+    # @param monefy [Monefy] another Monefy instance.
     #
     # @return [Boolean] true if current instace is greater than another and
     # false if not.
@@ -40,13 +44,15 @@ class Monefy
     # @example
     #   Monefy.new(50, 'EUR') > Monefy.new(40, 'EUR') # => true
     #   Monefy.new(50, 'EUR') > Monefy.new(200, 'USD') # => false
-    def > money
-      amount > converted_money_currency(money)
+    def > monefy
+      validate_monefy_instance(monefy)
+
+      amount > converted_money_currency(monefy)
     end
 
     # Check if one Monefy instance is less than another.
     #
-    # @param money [Monefy] another Monefy instance.
+    # @param monefy [Monefy] another Monefy instance.
     #
     # @return [Boolean] true if current instace is less than another and
     # false if not.
@@ -54,8 +60,10 @@ class Monefy
     # @example
     #   Monefy.new(50, 'EUR') < Monefy.new(40, 'EUR') # => false
     #   Monefy.new(50, 'EUR') < Monefy.new(200, 'USD') # => true
-    def < money
-      amount < converted_money_currency(money)
+    def < monefy
+      validate_monefy_instance(monefy)
+
+      amount < converted_money_currency(monefy)
     end
   end
 end

@@ -49,7 +49,19 @@ describe Monefy::Arithmetic do
 
       it "raises an error" do
         assert_raises StandardError do
+          @fifty_eur - "not a Monefy instance"
+        end
+      end
+
+      it "raises an error" do
+        assert_raises StandardError do
           @fifty_eur / "not a Numeric"
+        end
+      end
+
+      it "raises an error" do
+        assert_raises StandardError do
+          @fifty_eur * "not a Numeric"
         end
       end
     end
