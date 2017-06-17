@@ -3,6 +3,9 @@ require "monefy/matchers"
 require "monefy/operators"
 require "monefy/version"
 
+# Monefy instance with two properties:
+# - amount [float] is the quantiy of a currency
+# - currency [string] is the string correspondent to the currency
 class Monefy
   include Monefy::Converter
   include Monefy::Matchers
