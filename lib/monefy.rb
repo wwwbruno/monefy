@@ -70,13 +70,13 @@ class Monefy
   private
 
   def validate_currencies_rates
-    return if defined? @@currencies_rates
+    return if @@currencies_rates.present?
 
     raise StandardError, "No conversion rates set"
   end
 
   def validate_currency(currency)
-    return if @@currencies_rates.include?(currency)
+    return if @@currencies_rates.key? currency
 
     raise StandardError, "Invalid currency"
   end

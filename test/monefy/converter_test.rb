@@ -24,9 +24,10 @@ describe Monefy::Converter do
 
     describe "with invalid currency" do
       it "raises an error" do
-        assert_raises StandardError do
+        error = assert_raises StandardError do
           Monefy.new(50, 'EUR').convert_to('BRL')
         end
+        assert_equal "Invalid currency", error.message
       end
     end
   end

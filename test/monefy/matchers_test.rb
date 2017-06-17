@@ -33,27 +33,31 @@ describe Monefy::Matchers do
 
     describe "without Monefy instance" do
       it "raises an error" do
-        assert_raises StandardError do
+        error = assert_raises StandardError do
           @fifty_eur == "not a Monefy instance"
         end
+        assert_equal "Not a Monefy instance", error.message
       end
 
       it "raises an error" do
-        assert_raises StandardError do
+        error = assert_raises StandardError do
           @fifty_eur != "not a Monefy instance"
         end
+        assert_equal "Not a Monefy instance", error.message
       end
 
       it "raises an error" do
-        assert_raises StandardError do
+        error = assert_raises StandardError do
           @fifty_eur > "not a Monefy instance"
         end
+        assert_equal "Not a Monefy instance", error.message
       end
 
       it "raises an error" do
-        assert_raises StandardError do
+        error = assert_raises StandardError do
           @fifty_eur < "not a Monefy instance"
         end
+        assert_equal "Not a Monefy instance", error.message
       end
     end
   end

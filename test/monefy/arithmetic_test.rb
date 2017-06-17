@@ -1,18 +1,18 @@
 require "test_helper"
 
 describe Monefy::Arithmetic do
+  before do
+    Monefy.class_variable_set :@@currencies_rates, nil
+    Monefy.conversion_rates('EUR', {
+      'USD'     => 1.11,
+      'Bitcoin' => 0.0047
+    })
+
+    @fifty_eur = Monefy.new(50, 'EUR')
+    @twenty_dollars = Monefy.new(20, 'USD')
+  end
+
   describe "when set conversion_rates" do
-    before do
-      Monefy.class_variable_set :@@currencies_rates, nil
-      Monefy.conversion_rates('EUR', {
-        'USD'     => 1.11,
-        'Bitcoin' => 0.0047
-      })
-
-      @fifty_eur = Monefy.new(50, 'EUR')
-      @twenty_dollars = Monefy.new(20, 'USD')
-    end
-
     describe "with valid parameter: Monefy instance, integer or float" do
       it "returns 68.02 EUR instance when adding 20 USD to 50 EUR" do
         assert_equal Monefy.new(68.02, 'EUR'), @fifty_eur + @twenty_dollars
@@ -42,27 +42,31 @@ describe Monefy::Arithmetic do
 
     describe "with invalid parameter" do
       it "raises an error" do
-        assert_raises StandardError do
+        error = assert_raises StandardError do
           @fifty_eur + "not a Monefy instance"
         end
+        assert_equal "Not a Monefy instance", error.message
       end
 
       it "raises an error" do
-        assert_raises StandardError do
+        error = assert_raises StandardError do
           @fifty_eur - "not a Monefy instance"
         end
+        assert_equal "Not a Monefy instance", error.message
       end
 
       it "raises an error" do
-        assert_raises StandardError do
+        error = assert_raises StandardError do
           @fifty_eur / "not a Numeric"
         end
+        assert_equal "Not a numeric", error.message
       end
 
       it "raises an error" do
-        assert_raises StandardError do
+        error = assert_raises StandardError do
           @fifty_eur * "not a Numeric"
         end
+        assert_equal "Not a numeric", error.message
       end
     end
   end

@@ -12,7 +12,7 @@ class Monefy
     #   eur = Monefy.new(50, 'EUR')
     #   eur.convert_to('USD') # => #<Monefy:0x... @amount=55, @currency="USD">
     def convert_to(to_currency)
-      validate_currency(currency)
+      validate_currency(to_currency)
 
       new_amount = convert_currency(currency, amount, to_currency)
 

@@ -5,9 +5,10 @@ describe Monefy do
 
   describe "when not set conversion_rates" do
     it "raises an error" do
-      assert_raises StandardError do
+      error = assert_raises StandardError do
         Monefy.new(50, 'EUR')
       end
+      assert_equal "No conversion rates set", error.message
     end
   end
 
