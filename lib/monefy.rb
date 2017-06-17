@@ -6,6 +6,13 @@ require "monefy/version"
 # Monefy instance with two properties:
 # - amount [float] is the quantiy of a currency
 # - currency [string] is the string correspondent to the currency
+#
+# To create a new instance, pass amout and current as parameters
+#
+# @example
+#   Monefy.new(50, 'EUR') # => #<Monefy:0x... @amount=50.0, @currency="EUR">
+#
+# See 'self.conversion_rates' methdo before initializa a new instance
 class Monefy
   include Monefy::Converter
   include Monefy::Matchers
@@ -23,10 +30,34 @@ class Monefy
     self
   end
 
+  # Set default currencies and conversion rates
+  # used to calculate conversions.
+  #
+  # Use this method on your initilizer application
+  # config
+  #
+  # @param main_currency [String] main currency.
+  # @param other_currencies [Hash] currencies relatives to main currency with key with other
+  # currency and value with conversion rate.
+  #
+  # @return [Hash] all currencies conversion rate.
+  #
+  # @example
+  #   Monefy.conversion_rates('EUR', {
+  #     'USD'     => 1.11,
+  #     'Bitcoin' => 0.0047
+  #   }) # => {"USD"=>1.11, "Bitcoin"=>0.0047, "EUR"=>1}
   def self.conversion_rates(main_currency, other_currencies)
     @@currencies_rates = other_currencies.merge({ main_currency => 1 })
   end
 
+  # Return Money instance string value
+  #
+  # @return [String] currency and amout string.
+  #
+  # @example
+  #   Monefy.new(50, 'EUR').to_s # => "50.00 EUR"
+  #   "#{Monefy.new(50, 'EUR')}" # => "50.00 EUR"
   def to_s
     "#{'%.02f' % amount} #{currency}"
   end
