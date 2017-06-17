@@ -1,6 +1,6 @@
 require "test_helper"
 
-describe Monefy::Operators do
+describe Monefy::Arithmetic do
   describe "when set conversion_rates" do
     before do
       Monefy.class_variable_set :@@currencies_rates, nil
@@ -29,7 +29,7 @@ describe Monefy::Operators do
       assert_equal Monefy.new(60, 'USD'), @twenty_dollars * 3
     end
 
-    describe "operators in sequence" do
+    describe "arithmetic in sequence" do
       it "returns corrects values for each operation" do
         assert_equal Monefy.new(124.47, 'EUR'), @fifty_eur + Monefy.new(0.35, 'Bitcoin')
         assert_equal Monefy.new(22.97, 'EUR'), @fifty_eur - Monefy.new(30, 'USD')

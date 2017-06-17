@@ -1,6 +1,6 @@
 class Monefy
-  # Encapsulate all the logic to handle basics operators between two instances.
-  module Operators
+  # Encapsulate all the logic to handle basics arithmetic between two instances.
+  module Arithmetic
 
     # Sum two Monefy instances
     #

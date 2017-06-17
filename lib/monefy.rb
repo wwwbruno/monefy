@@ -1,6 +1,6 @@
 require "monefy/converter"
 require "monefy/matchers"
-require "monefy/operators"
+require "monefy/arithmetic"
 require "monefy/version"
 
 # Monefy instance with two attr_reader
@@ -10,7 +10,7 @@ require "monefy/version"
 class Monefy
   include Monefy::Converter
   include Monefy::Matchers
-  include Monefy::Operators
+  include Monefy::Arithmetic
 
   attr_reader :amount, :currency
 
