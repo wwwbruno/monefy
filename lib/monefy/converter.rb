@@ -1,5 +1,16 @@
 class Monefy
+  # Encapsulate all the logic to convet currencies
   module Converter
+
+    # Converts a Monefy instance froma a currency to another.
+    #
+    # @param to_currency [String] currency to be converted to.
+    #
+    # @return [Monefy] new Monefy instance converted to another currency.
+    #
+    # @example
+    #   eur = Monefy.new(50, 'EUR')
+    #   eur.convert_to('USD') # => #<Monefy:0x... @amount=55, @currency="USD">
     def convert_to(to_currency)
       validate_currency(currency)
 
