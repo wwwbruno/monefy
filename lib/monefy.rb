@@ -6,13 +6,6 @@ require "monefy/version"
 # Monefy instance with two properties:
 # - amount [float] is the quantiy of a currency
 # - currency [string] is the string correspondent to the currency
-#
-# To create a new instance, pass amout and current as parameters
-#
-# @example
-#   Monefy.new(50, 'EUR') # => #<Monefy:0x... @amount=50.0, @currency="EUR">
-#
-# See 'self.conversion_rates' methdo before initializa a new instance
 class Monefy
   include Monefy::Converter
   include Monefy::Matchers
@@ -20,6 +13,17 @@ class Monefy
 
   attr_reader :amount, :currency
 
+  # To create a new instance, pass amout and current as parameters
+  #
+  # @param amount [Integer, Float] quantiy of a currency.
+  # @param currency [String] currency key created on `conversion_rates` method.
+  #
+  # @return [Monefy] all currencies conversion rate.
+  #
+  # @example
+  #   Monefy.new(50, 'EUR') # => #<Monefy:0x... @amount=50.0, @currency="EUR">
+  #
+  # See 'self.conversion_rates' methdo before initializa a new instance
   def initialize(amount, currency)
     validate_currencies_rates
     validate_currency(currency)
@@ -37,8 +41,8 @@ class Monefy
   # config
   #
   # @param main_currency [String] main currency.
-  # @param other_currencies [Hash] currencies relatives to main currency with key with other
-  # currency and value with conversion rate.
+  # @param other_currencies [Hash] currencies relatives to main currency with
+  # key with other currency and value with conversion rate.
   #
   # @return [Hash] all currencies conversion rate.
   #
