@@ -23,31 +23,46 @@ $ bundle
 
 ## Usage
 
+#### Set your conversion rates on your Initialize file
 ```ruby
-# Set conversion rates on your Initialize file
 Monefy.conversion_rates('EUR', {
   'USD'     => 1.11,
   'Bitcoin' => 0.0047
 }) # => {"USD"=>1.11, "Bitcoin"=>0.0047, "EUR"=>1}
+```
 
-# Create a new Monefy instance passing amount and
-# currency as initializer parameters
-fifty_eur = Monefy.new(50, 'EUR') # => #<Monefy:0x... @amount=50.0, @currency="EUR">
+#### Create a new Monefy instance passing amount and currency as initializer parameters
+```ruby
+fifty_eur = Monefy.new(50, 'EUR')
+# => #<Monefy:0x... @amount=50.0, @currency="EUR">
+```
 
-# Convert to another currencies
-fifty_eur.convert_to('USD') # => #<Monefy:0x... @amount=55.5, @currency="USD">
-fifty_eur.convert_to('Bitcoin') # => #<Monefy:0x... @amount=0.24, @currency="Bitcoin">
+#### Convert to another currencies
+```ruby
+fifty_eur.convert_to('USD')
+# => #<Monefy:0x... @amount=55.5, @currency="USD">
+fifty_eur.convert_to('Bitcoin')
+# => #<Monefy:0x... @amount=0.24, @currency="Bitcoin">
+```
 
-# Add and subtract with other Monefy instances
-# with different currencies
-fifty_eur + Monefy.new(20, 'USD') # => #<Monefy:0x... @amount=68.02, @currency="EUR">
-fifty_eur - Monefy.new(0.03, 'Bitcoin') # => #<Monefy:0x... @amount=43.62, @currency="EUR">
+#### Add and subtract with other Monefy instances with different currencies
+```ruby
+fifty_eur + Monefy.new(20, 'USD')
+# => #<Monefy:0x... @amount=68.02, @currency="EUR">
+fifty_eur - Monefy.new(0.03, 'Bitcoin')
+# => #<Monefy:0x... @amount=43.62, @currency="EUR">
+```
 
-# Multiply and divide
-fifty_eur / 2 # => #<Monefy:0x... @amount=25.0, @currency="EUR">
-fifty_eur * 3 # => #<Monefy:0x... @amount=150.0, @currency="EUR">
+#### Multiply and divide
+```ruby
+fifty_eur / 2
+# => #<Monefy:0x... @amount=25.0, @currency="EUR">
+fifty_eur * 3
+# => #<Monefy:0x... @amount=150.0, @currency="EUR">
+```
 
-# Compare different currencies:
+#### Compare different currencies:
+```ruby
 fifty_eur > Monefy.new(54.55, 'USD') # => true
 Monefy.new(180, 'USD') < Monefy.new(0.73, 'Bitcoin') # => false
 Monefy.new(54.55, 'USD') == Monefy.new(49.14, 'EUR') # => true
