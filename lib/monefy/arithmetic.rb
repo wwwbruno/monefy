@@ -14,9 +14,11 @@ class Monefy
     def + monefy
       validate_monefy_instance(monefy)
 
-      new_amount = amount + converted_money_currency(monefy)
-
-      create_new_instace(new_amount, currency)
+      calculated_amount = amount + converted_money_currency(monefy)
+      create_new_instace(
+        calculated_amount,
+        currency
+      )
     end
 
     # Subtract two Monefy instances
@@ -31,9 +33,11 @@ class Monefy
     def - monefy
       validate_monefy_instance(monefy)
 
-      new_amount = amount - converted_money_currency(monefy)
-
-      create_new_instace(new_amount, currency)
+      calculated_amount = amount - converted_money_currency(monefy)
+      create_new_instace(
+        calculated_amount,
+        currency
+      )
     end
 
     # Split a Monefy instances amount
@@ -48,9 +52,11 @@ class Monefy
     def / value
       validate_arithmetic_value(value)
 
-      new_amount = (amount.to_f / value.to_f)
-
-      create_new_instace(new_amount, currency)
+      calculated_amount = amount / value
+      create_new_instace(
+        calculated_amount,
+        currency
+      )
     end
 
     # Multiply a Monefy instances amount
@@ -66,9 +72,11 @@ class Monefy
     def * value
       validate_arithmetic_value(value)
 
-      new_amount = (amount.to_f * value.to_f)
-
-      create_new_instace(new_amount, currency)
+      calculated_amount = amount * value
+      create_new_instace(
+        calculated_amount,
+        currency
+      )
     end
 
     private
