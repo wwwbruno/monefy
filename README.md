@@ -22,44 +22,35 @@ $ bundle
 
 ## Usage
 
-Configure the conversion rates and create a new Monefy instance passing amount and currency as initializer parameters:
-
 ```ruby
+# Set conversion rates on your Initialize file
 Monefy.conversion_rates('EUR', {
   'USD'     => 1.11,
   'Bitcoin' => 0.0047
-})
+}) # => {"USD"=>1.11, "Bitcoin"=>0.0047, "EUR"=>1}
 
-fifty_eur = Monefy.new(50, 'EUR')
-```
+# Create a new Monefy instance passing amount and
+# currency as initializer parameters
+fifty_eur = Monefy.new(50, 'EUR') # => #<Monefy:0x... @amount=50.0, @currency="EUR">
 
-Convert to another currencies:
+# Convert to another currencies
+fifty_eur.convert_to('USD') # => #<Monefy:0x... @amount=55.5, @currency="USD">
+fifty_eur.convert_to('Bitcoin') # => #<Monefy:0x... @amount=0.24, @currency="Bitcoin">
 
-```ruby
-fifty_eur.convert_to('Bitcoin') # => 0.24 Bitcoin
-fifty_eur.convert_to('USD') # => 55.50 USD
-```
+# Add and subtract with other Monefy instances
+# with different currencies
+fifty_eur + Monefy.new(20, 'USD') # => #<Monefy:0x... @amount=68.02, @currency="EUR">
+fifty_eur - Monefy.new(0.03, 'Bitcoin') # => #<Monefy:0x... @amount=43.62, @currency="EUR">
 
-Add and subtract with different currencies:
+# Multiply and divide
+fifty_eur / 2 # => #<Monefy:0x... @amount=25.0, @currency="EUR">
+fifty_eur * 3 # => #<Monefy:0x... @amount=150.0, @currency="EUR">
 
-```ruby
-fifty_eur + Monefy.new(20, 'USD') # => 68.02 EUR
-fifty_eur - Monefy.new(0.03, 'Bitcoin') # => 43.62 EUR
-```
-
-Multiply and divide:
-
-```ruby
-fifty_eur / 2 # => 25.00 EUR
-Monefy.new(25, 'USD') * 3 # => 75.00 USD
-```
-
-Compare different currencies:
-
-```ruby
+# Compare different currencies:
 fifty_eur > Monefy.new(54.55, 'USD') # => true
 Monefy.new(180, 'USD') < Monefy.new(0.73, 'Bitcoin') # => false
 Monefy.new(54.55, 'USD') == Monefy.new(49.14, 'EUR') # => true
+Monefy.new(35, 'USD') != Monefy.new(49.14, 'EUR') # => true
 ```
 
 ## Development

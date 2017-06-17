@@ -56,7 +56,7 @@ class Monefy
     @@currencies_rates = other_currencies.merge({ main_currency => 1 })
   end
 
-  # Return Money instance string value
+  # Return Monefy instance string value
   #
   # @return [String] currency and amout string.
   #
