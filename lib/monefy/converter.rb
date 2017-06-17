@@ -9,6 +9,10 @@ class Monefy
 
     private
 
+    def converted_money_currency(money)
+      convert_currency(money.currency, money.amount, currency)
+    end
+
     def convert_currency(from_currency, from_amount, to_currency)
       converted = (conversion_rates[to_currency] * from_amount) / conversion_rates[from_currency]
       converted.to_f.round(2)

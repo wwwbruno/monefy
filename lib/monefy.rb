@@ -1,9 +1,11 @@
 require "monefy/converter"
+require "monefy/matchers"
 require "monefy/operators"
 require "monefy/version"
 
 class Monefy
   include Monefy::Converter
+  include Monefy::Matchers
   include Monefy::Operators
 
   attr_reader :amount, :currency

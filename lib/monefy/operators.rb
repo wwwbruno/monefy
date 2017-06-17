@@ -1,13 +1,13 @@
 class Monefy
   module Operators
     def + money
-      @amount += converted_amount(money)
+      @amount += converted_money_currency(money)
 
       self
     end
 
     def - money
-      @amount -= converted_amount(money)
+      @amount -= converted_money_currency(money)
 
       self
     end
@@ -22,16 +22,6 @@ class Monefy
       @amount = (amount * integer)
 
       self
-    end
-
-    def == money
-      amount.to_f == converted_amount(money).to_f
-    end
-
-    private
-
-    def converted_amount(money)
-      convert_currency(money.currency, money.amount, currency)
     end
   end
 end

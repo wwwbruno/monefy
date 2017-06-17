@@ -34,6 +34,18 @@ class MonefyTest < Minitest::Test
     assert_equal Monefy.new(60, 'USD'), (twenty_dollars * 3)
   end
 
+  def test_equal_matcher
+    assert_equal true, (fifty_eur_in_usd == fifty_eur)
+  end
+
+  def test_greater_matcher
+    assert_equal true, (twenty_dollars > Monefy.new(5, 'USD'))
+  end
+
+  def test_less_matcher
+    assert_equal true, (twenty_dollars < fifty_eur)
+  end
+
   private
 
   def fifty_eur
@@ -42,5 +54,9 @@ class MonefyTest < Minitest::Test
 
   def twenty_dollars
     Monefy.new(20, 'USD')
+  end
+
+  def fifty_eur_in_usd
+    fifty_eur.convert_to('USD')
   end
 end
