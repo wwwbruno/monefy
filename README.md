@@ -69,6 +69,28 @@ Monefy.new(54.55, 'USD') == Monefy.new(49.14, 'EUR') # => true
 Monefy.new(35, 'USD') != Monefy.new(49.14, 'EUR') # => true
 ```
 
+## Exceptions
+#### Instantiate class without setting conversion rates
+```ruby
+Monefy.new(50, 'USD')
+# => StandardError: No conversion rates set
+
+# Solution
+# Set your conversion rates on your Initialize file
+Monefy.conversion_rates('EUR', {
+  'USD'     => 1.11,
+  'Bitcoin' => 0.0047
+}) # => {"USD"=>1.11, "Bitcoin"=>0.0047, "EUR"=>1}
+```
+#### Instantiate class or call convert_to to method with invalid current
+```ruby
+Monefy.new(50, 'INVALID-CURRENCY')
+# => StandardError: "Invalid currency"
+
+Monefy.new(50, 'EUR').convert_to('INVALID-CURRENCY')
+# => StandardError: "Invalid currency"
+```
+
 ## Development
 
 After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake test` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
