@@ -1,24 +1,28 @@
 require "test_helper"
 
 describe Monefy::Matchers do
-  def test_equal
-    fifty_eur_in_usd = Monefy.new(50, 'EUR').convert_to('USD')
-    fifty_eur = Monefy.new(50, 'EUR')
+  describe "when set conversion_rates" do
+    before do
+      Monefy.class_variable_set :@@currencies_rates, nil
+      Monefy.conversion_rates('EUR', {
+        'USD'     => 1.11,
+        'Bitcoin' => 0.0047
+      })
 
-    assert_equal true, fifty_eur_in_usd == fifty_eur
-  end
+      @fifty_eur = Monefy.new(50, 'EUR')
+      @twenty_dollars =Monefy.new(20, 'USD')
+    end
 
-  def test_greater
-    twenty_dollars = Monefy.new(20, 'USD')
-    five_dollars = Monefy.new(5, 'USD')
+    it "matches 50 EUR equals to 50 EUR converted to USD" do
+      assert_equal true, @fifty_eur == @fifty_eur.convert_to('USD')
+    end
 
-    assert_equal true, twenty_dollars > five_dollars
-  end
+    it "matches 20 USD greater than 10 EUR" do
+      assert_equal true, @twenty_dollars > Monefy.new(10, 'EUR')
+    end
 
-  def test_less
-    twenty_dollars = Monefy.new(20, 'USD')
-    fifty_eur = Monefy.new(50, 'EUR')
-
-    assert_equal true, twenty_dollars < fifty_eur
+    it "matches 20 USD less than 1.12 Bitcoin" do
+      assert_equal true, @twenty_dollars < Monefy.new(0.12, 'Bitcoin')
+    end
   end
 end

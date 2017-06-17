@@ -21,9 +21,14 @@ $ bundle
 
 ## Usage
 
-Create a new Monefy instance passing amount and currency as initializer parameters:
+Configure the conversion rates and create a new Monefy instance passing amount and currency as initializer parameters:
 
 ```ruby
+Monefy.conversion_rates('EUR', {
+  'USD'     => 1.11,
+  'Bitcoin' => 0.0047
+})
+
 fifty_eur = Monefy.new(50, 'EUR')
 ```
 
