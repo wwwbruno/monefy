@@ -26,7 +26,7 @@ describe Monefy::Arithmetic do
         assert_equal Monefy.new(25, 'EUR'), @fifty_eur / 2
       end
 
-      it "returns 60 USD instance when splitting 50 EUR by 2" do
+      it "returns 60 USD instance when multiplying 50 EUR by 3" do
         assert_equal Monefy.new(60, 'USD'), @twenty_dollars * 3
       end
 

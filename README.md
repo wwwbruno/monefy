@@ -82,6 +82,7 @@ Monefy.conversion_rates('EUR', {
   'Bitcoin' => 0.0047
 }) # => {"USD"=>1.11, "Bitcoin"=>0.0047, "EUR"=>1}
 ```
+
 #### Instantiate class or call convert_to to method with invalid current
 ```ruby
 Monefy.new(50, 'INVALID-CURRENCY')
@@ -89,6 +90,33 @@ Monefy.new(50, 'INVALID-CURRENCY')
 
 Monefy.new(50, 'EUR').convert_to('INVALID-CURRENCY')
 # => StandardError: "Invalid currency"
+```
+
+#### Compare Monefy instance without another Monefy instance
+```ruby
+Monefy.new(50, 'EUR') == 50
+# => StandardError: "Not a Monefy instance"
+
+Monefy.new(50, 'EUR') > "40.0 EUR"
+# => StandardError: "Not a Monefy instance"
+```
+
+#### Adding or subtracting a Monefy instance without another Monefy instance
+```ruby
+Monefy.new(50, 'EUR') + 50
+# => StandardError: "Not a Monefy instance"
+
+Monefy.new(50, 'EUR') - "40.0 EUR"
+# => StandardError: "Not a Monefy instance"
+```
+
+#### Splitting or multiplying a Monefy instance without a Numeric
+```ruby
+Monefy.new(50, 'EUR') / Monefy.new(15, 'EUR')
+# => StandardError: "Not a numeric"
+
+Monefy.new(50, 'EUR') * "40.0 EUR"
+# => StandardError: "Not a numeric"
 ```
 
 ## Development

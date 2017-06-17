@@ -84,7 +84,7 @@ class Monefy
   def validate_monefy_instance(monefy)
     return if monefy.instance_of? Monefy
 
-    raise StandardError, "Not a Monefy instance parameter"
+    raise StandardError, "Not a Monefy instance"
   end
 
   def currencies_rates

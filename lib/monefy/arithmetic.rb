@@ -76,7 +76,7 @@ class Monefy
     def validate_arithmetic_value(value)
       return if value.is_a? Numeric
 
-      raise StandardError, "Not an numeric parameter"
+      raise StandardError, "Not a numeric"
     end
   end
 end
