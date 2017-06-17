@@ -1,38 +1,67 @@
 # Monefy
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/monefy`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+This gem will easily help you to perform currency conversion and arithmetics with different currencies.
 
 ## Installation
 
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'monefy'
+gem 'monefy', github: 'wwwbruno/monefy'
 ```
 
 And then execute:
 
-    $ bundle
-
-Or install it yourself as:
-
-    $ gem install monefy
+```
+$ bundle
+```
 
 ## Usage
 
-TODO: Write usage instructions here
+Create a new Monefy instance passing amount and currency as initializer parameters:
+
+```ruby
+fifty_eur = Monefy.new(50, 'EUR')
+```
+
+Convert to another currencies:
+
+```ruby
+fifty_eur.convert_to('Bitcoin') # => 0.24 Bitcoin
+fifty_eur.convert_to('USD') # => 55.50 USD
+```
+
+Add and subtract with different currencies:
+
+```ruby
+fifty_eur + Monefy.new(20, 'USD') # => 68.02 EUR
+fifty_eur - Monefy.new(0.03, 'Bitcoin') # => 43.62 EUR
+```
+
+Multiply and divide:
+
+```ruby
+fifty_eur / 2 # => 25.00 EUR
+Monefy.new(25, 'USD') * 3 # => 75.00 USD
+```
+
+Compare different currencies:
+
+```ruby
+fifty_eur > Monefy.new(54.55, 'USD') # => true
+Monefy.new(180, 'USD') < Monefy.new(0.73, 'Bitcoin') # => false
+Monefy.new(54.55, 'USD') == Monefy.new(49.14, 'EUR') # => true
+```
 
 ## Development
 
 After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake test` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
 
-To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and tags, and push the `.gem` file to [rubygems.org](https://rubygems.org).
+To install this gem onto your local machine, run `bundle exec rake install`.
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/monefy.
+Bug reports and pull requests are welcome on GitHub at https://github.com/wwwbruno/monefy.
 
 ## License
 
