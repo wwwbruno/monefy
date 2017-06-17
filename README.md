@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/wwwbruno/monefy.svg?branch=master)](https://travis-ci.org/wwwbruno/monefy)
+
 # Monefy
 
 This gem will easily help you to perform currency conversion and arithmetics with different currencies.
