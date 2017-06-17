@@ -18,10 +18,23 @@ class MonefyTest < Minitest::Test
     assert_equal Monefy.new(55.50, 'USD'), fifty_eur.convert_to('USD')
   end
 
-  def test_operators
+  def test_plus_operator
     assert_equal Monefy.new(68.02, 'EUR'), (fifty_eur + twenty_dollars)
+  end
+
+  def test_minus_operator
     assert_equal Monefy.new(31.98, 'EUR'), (fifty_eur - twenty_dollars)
   end
+
+  def test_splitter_operator
+    assert_equal Monefy.new(25, 'EUR'), (fifty_eur / 2)
+  end
+
+  def test_multiplier_operator
+    assert_equal Monefy.new(60, 'USD'), (twenty_dollars * 3)
+  end
+
+  private
 
   def fifty_eur
     Monefy.new(50, 'EUR')
