@@ -1,4 +1,5 @@
 [![Build Status](https://travis-ci.org/wwwbruno/monefy.svg?branch=master)](https://travis-ci.org/wwwbruno/monefy)
+[![Code Climate](https://codeclimate.com/github/wwwbruno/monefy/badges/gpa.svg)](https://codeclimate.com/github/wwwbruno/monefy)
 
 # Monefy
 
