@@ -14,7 +14,7 @@ class Monefy
     validate_currencies_rates
     validate_currency(currency)
 
-    @amount = amount
+    @amount = amount.round(2)
     @currency = currency
 
     self
@@ -40,5 +40,9 @@ class Monefy
 
   def currencies_rates
     @@currencies_rates
+  end
+
+  def create_new_instace(new_amount, new_currency)
+    self.class.new(new_amount, new_currency)
   end
 end

@@ -17,6 +17,10 @@ describe Monefy::Matchers do
       assert_equal true, @fifty_eur == @fifty_eur.convert_to('USD')
     end
 
+    it "matches 50 EUR different from 49.90 EUR" do
+      assert_equal true, @fifty_eur != Monefy.new(49.90, 'EUR')
+    end
+
     it "matches 20 USD greater than 10 EUR" do
       assert_equal true, @twenty_dollars > Monefy.new(10, 'EUR')
     end

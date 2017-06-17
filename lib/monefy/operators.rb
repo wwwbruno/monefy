@@ -1,27 +1,27 @@
 class Monefy
   module Operators
     def + money
-      @amount += converted_money_currency(money)
+      new_amount = amount + converted_money_currency(money)
 
-      self
+      create_new_instace(new_amount, currency)
     end
 
     def - money
-      @amount -= converted_money_currency(money)
+      new_amount = amount - converted_money_currency(money)
 
-      self
+      create_new_instace(new_amount, currency)
     end
 
-    def / integer
-      @amount = (amount / integer)
+    def / value
+      new_amount = (amount.to_f / value.to_f)
 
-      self
+      create_new_instace(new_amount, currency)
     end
 
-    def * integer
-      @amount = (amount * integer)
+    def * value
+      new_amount = (amount.to_f * value.to_f)
 
-      self
+      create_new_instace(new_amount, currency)
     end
   end
 end
