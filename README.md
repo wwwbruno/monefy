@@ -1,3 +1,4 @@
+[![Gem Version](https://badge.fury.io/rb/monefy.svg)](https://badge.fury.io/rb/monefy)
 [![Build Status](https://travis-ci.org/wwwbruno/monefy.svg?branch=master)](https://travis-ci.org/wwwbruno/monefy)
 [![Code Climate](https://codeclimate.com/github/wwwbruno/monefy/badges/gpa.svg)](https://codeclimate.com/github/wwwbruno/monefy)
 [![Coverage Status](https://coveralls.io/repos/github/wwwbruno/monefy/badge.svg?branch=master)](https://coveralls.io/github/wwwbruno/monefy?branch=master)
