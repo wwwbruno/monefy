@@ -13,7 +13,7 @@ This gem will easily help you to perform currency conversion and arithmetics wit
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'monefy', github: 'wwwbruno/monefy'
+gem 'monefy'
 ```
 
 And then execute:
