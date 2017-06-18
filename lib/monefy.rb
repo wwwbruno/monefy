@@ -70,7 +70,7 @@ class Monefy
   private
 
   def validate_currencies_rates
-    return if @@currencies_rates.present?
+    return if defined?(@@currencies_rates) && @@currencies_rates.present?
 
     raise StandardError, "No conversion rates set"
   end
